@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowLeft, Star, Filter, ChevronDown } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -301,9 +302,11 @@ export default function ReviewsPage() {
                   className="bg-white rounded-lg p-6 shadow-sm"
                 >
                   <div className="flex items-start space-x-4">
-                    <img
+                    <Image
                       src={review.avatar}
                       alt={review.name}
+                      width={400}
+                      height={100}
                       className="w-12 h-12 rounded-full object-cover flex-shrink-0"
                     />
 

@@ -13,6 +13,7 @@ import {
   Minus,
   Check,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -96,9 +97,11 @@ export default function ProductDetails() {
               transition={{ duration: 0.6 }}
               className="aspect-square overflow-hidden rounded-xl bg-gray-100 relative"
             >
-              <img
+              <Image
                 src={product.images[selectedImage]}
                 alt={product.name}
+                width={400}
+                height={100}
                 className="w-full h-full object-cover transition-opacity duration-300"
               />
               <div className="absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
@@ -129,9 +132,11 @@ export default function ProductDetails() {
                       : "border border-gray-200 hover:border-gray-400"
                   }`}
                 >
-                  <img
+                  <Image
                     src={image}
                     alt={`${product.name} ${index + 1}`}
+                    width={400}
+                    height={100}
                     className="w-full h-full object-cover"
                   />
                 </motion.button>

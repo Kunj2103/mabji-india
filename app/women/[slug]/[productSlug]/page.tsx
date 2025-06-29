@@ -4,7 +4,6 @@ import ProductRow from "@/components/ui/rowlist";
 import { motion } from "framer-motion";
 import {
   Heart,
-  Share2,
   Star,
   Truck,
   Shield,
@@ -14,6 +13,7 @@ import {
   Check,
   ChevronRight,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -94,9 +94,11 @@ export default function ProductDetails() {
               transition={{ duration: 0.6 }}
               className="aspect-square overflow-hidden rounded-xl bg-gray-100 relative"
             >
-              <img
+              <Image
                 src={product.images[selectedImage]}
                 alt={product.name}
+                width={400}
+                height={100}
                 className="w-full h-full object-cover transition-opacity duration-300"
               />
               <div className="absolute top-3 right-3 bg-white rounded-full p-2 shadow-md">
@@ -127,9 +129,11 @@ export default function ProductDetails() {
                       : "border border-gray-200 hover:border-gray-400"
                   }`}
                 >
-                  <img
+                  <Image
                     src={image}
                     alt={`${product.name} ${index + 1}`}
+                    width={400}
+                    height={100}
                     className="w-full h-full object-cover"
                   />
                 </motion.button>
@@ -323,13 +327,6 @@ export default function ProductDetails() {
                   ) : (
                     "Add to Cart"
                   )}
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="p-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors"
-                >
-                  <Share2 size={20} />
                 </motion.button>
               </div>
 

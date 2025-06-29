@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Star, ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const reviews = [
@@ -81,9 +82,11 @@ export default function ReviewsSection() {
               className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="flex items-center mb-4">
-                <img
+                <Image
                   src={review.avatar}
                   alt={review.name}
+                  width={400}
+                  height={100}
                   className="w-12 h-12 rounded-full object-cover mr-4"
                 />
                 <div>

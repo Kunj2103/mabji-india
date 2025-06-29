@@ -1,103 +1,245 @@
-import Image from "next/image";
+import CategoryCollection from "./components/category-collection";
+import FeaturesAndProducts from "./components/featured-products";
+import SingleBanner from "./components/ui/banner";
+import Carousel from "./components/ui/carousel";
+import Rowlist from "./components/ui/rowlist";
+
+const banners = [
+  {
+    imageSrc: "https://placehold.co/1200x400?text=Slide+1",
+    alt: "Slide 1",
+    href: "#slide1",
+  },
+  {
+    imageSrc: "https://placehold.co/1200x400?text=Slide+2",
+    alt: "Slide 2",
+    href: "#slide2",
+  },
+  {
+    imageSrc: "https://placehold.co/1200x400?text=Slide+3",
+    alt: "Slide 3",
+    href: "#slide3",
+  },
+];
+
+const data = [
+  {
+    id: "prod-001",
+    name: "Vintage Engagement Ring with Marquise Cut",
+    slug: "vintage-engagement-ring-marquise-cut",
+    description:
+      "A timeless vintage-style engagement ring featuring a brilliant marquise cut lab-grown diamond.",
+    shortDescription: "Marquise cut lab diamond on vintage band",
+    price: 86900,
+    salePrice: 64900,
+    sku: "VINT-MARQ-001",
+    stock: 10,
+    rating: 4.9,
+    images: [
+      "https://placehold.co/400x400?text=Ring+Front+1",
+      "https://placehold.co/400x400?text=Ring+Hover+1",
+    ],
+    categoryIds: ["engagement", "vintage"],
+    tags: ["lab grown", "diamond", "vintage"],
+    featured: true,
+    status: "active",
+    seoTitle: "Vintage Marquise Cut Engagement Ring | Lab Grown",
+    seoDescription:
+      "Shop vintage-inspired engagement rings with lab-grown marquise diamonds at great prices.",
+    weight: 5.5,
+    dimensions: {
+      length: 5,
+      width: 5,
+      height: 3,
+    },
+    createdAt: new Date("2024-05-15T10:00:00.000Z"),
+    updatedAt: new Date("2024-06-20T12:30:00.000Z"),
+  },
+  {
+    id: "prod-002",
+    name: "Chevron Wedding Band with Round Diamonds",
+    slug: "chevron-wedding-band-round-diamonds",
+    description:
+      "Elegant chevron-shaped band studded with sparkling round lab-grown diamonds.",
+    shortDescription: "Chevron band with round lab diamonds",
+    price: 24900,
+    salePrice: 18600,
+    sku: "CHEV-RND-002",
+    stock: 20,
+    rating: 4.7,
+    images: [
+      "https://placehold.co/400x400?text=Ring+Front+2",
+      "https://placehold.co/400x400?text=Ring+Hover+2",
+    ],
+    categoryIds: ["wedding-band"],
+    tags: ["lab grown", "chevron", "diamond"],
+    featured: false,
+    status: "active",
+    seoTitle: "Chevron Lab Diamond Wedding Band | Elegant Design",
+    seoDescription:
+      "Buy modern chevron-style wedding bands with lab-grown diamonds.",
+    weight: 3.2,
+    dimensions: {
+      length: 4,
+      width: 4,
+      height: 2,
+    },
+    createdAt: new Date("2024-06-01T11:45:00.000Z"),
+    updatedAt: new Date("2024-06-22T14:00:00.000Z"),
+  },
+  {
+    id: "prod-003",
+    name: "Floating Diamond Eternity Band",
+    slug: "floating-diamond-eternity-band",
+    description:
+      "A beautiful band featuring floating bezel-set diamonds for a contemporary look.",
+    shortDescription: "Floating lab-grown diamond band",
+    price: 21200,
+    salePrice: 15800,
+    sku: "FLOAT-DIA-003",
+    stock: 5,
+    rating: 4.8,
+    images: [
+      "https://placehold.co/400x400?text=Ring+Front+3",
+      "https://placehold.co/400x400?text=Ring+Hover+3",
+    ],
+    categoryIds: ["wedding-band", "eternity"],
+    tags: ["floating", "lab grown", "eternity"],
+    featured: true,
+    status: "active",
+    seoTitle: "Floating Lab Diamond Eternity Band | Modern Look",
+    seoDescription:
+      "Discover our floating eternity bands with lab-grown diamonds for a clean, stylish look.",
+    weight: 4.1,
+    dimensions: {
+      length: 4.5,
+      width: 4.5,
+      height: 2.5,
+    },
+    createdAt: new Date("2024-06-10T09:00:00.000Z"),
+    updatedAt: new Date("2024-06-25T16:15:00.000Z"),
+  },
+  {
+    id: "prod-004",
+    name: "Floating Diamond Eternity Band",
+    slug: "floating-diamond-eternity-band",
+    description:
+      "A beautiful band featuring floating bezel-set diamonds for a contemporary look.",
+    shortDescription: "Floating lab-grown diamond band",
+    price: 21200,
+    salePrice: 15800,
+    sku: "FLOAT-DIA-003",
+    stock: 5,
+    rating: 4.8,
+    images: [
+      "https://placehold.co/400x400?text=Ring+Front+3",
+      "https://placehold.co/400x400?text=Ring+Hover+3",
+    ],
+    categoryIds: ["wedding-band", "eternity"],
+    tags: ["floating", "lab grown", "eternity"],
+    featured: true,
+    status: "active",
+    seoTitle: "Floating Lab Diamond Eternity Band | Modern Look",
+    seoDescription:
+      "Discover our floating eternity bands with lab-grown diamonds for a clean, stylish look.",
+    weight: 4.1,
+    dimensions: {
+      length: 4.5,
+      width: 4.5,
+      height: 2.5,
+    },
+    createdAt: new Date("2024-06-10T09:00:00.000Z"),
+    updatedAt: new Date("2024-06-25T16:15:00.000Z"),
+  },
+  {
+    id: "prod-005",
+    name: "Floating Diamond Eternity Band",
+    slug: "floating-diamond-eternity-band",
+    description:
+      "A beautiful band featuring floating bezel-set diamonds for a contemporary look.",
+    shortDescription: "Floating lab-grown diamond band",
+    price: 21200,
+    salePrice: 15800,
+    sku: "FLOAT-DIA-003",
+    stock: 5,
+    rating: 4.8,
+    images: [
+      "https://placehold.co/400x400?text=Ring+Front+3",
+      "https://placehold.co/400x400?text=Ring+Hover+3",
+    ],
+    categoryIds: ["wedding-band", "eternity"],
+    tags: ["floating", "lab grown", "eternity"],
+    featured: true,
+    status: "active",
+    seoTitle: "Floating Lab Diamond Eternity Band | Modern Look",
+    seoDescription:
+      "Discover our floating eternity bands with lab-grown diamonds for a clean, stylish look.",
+    weight: 4.1,
+    dimensions: {
+      length: 4.5,
+      width: 4.5,
+      height: 2.5,
+    },
+    createdAt: new Date("2024-06-10T09:00:00.000Z"),
+    updatedAt: new Date("2024-06-25T16:15:00.000Z"),
+  },
+];
+
+const featuredProducts = [
+  {
+    id: 1,
+    name: "Classic Cotton T-Shirt",
+    price: "$49",
+    originalPrice: "$69",
+    image:
+      "https://images.pexels.com/photos/8532616/pexels-photo-8532616.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
+    rating: 4.8,
+    reviews: 124,
+  },
+  {
+    id: 2,
+    name: "Summer Dress",
+    price: "$89",
+    originalPrice: "$129",
+    image:
+      "https://images.pexels.com/photos/7679720/pexels-photo-7679720.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
+    rating: 4.9,
+    reviews: 89,
+  },
+  {
+    id: 3,
+    name: "Casual Sneakers",
+    price: "$99",
+    originalPrice: "$149",
+    image:
+      "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
+    rating: 4.7,
+    reviews: 156,
+  },
+  {
+    id: 4,
+    name: "Designer Handbag",
+    price: "$199",
+    originalPrice: "$299",
+    image:
+      "https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
+    rating: 4.8,
+    reviews: 203,
+  },
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      <Carousel slides={banners} />
+      <SingleBanner
+        imageSrc="https://placehold.co/1200x400?text=Slide+3"
+        alt="Single banner"
+      />
+      <Rowlist products={data} />
+      <CategoryCollection />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      <FeaturesAndProducts products={featuredProducts} />
+    </>
   );
 }

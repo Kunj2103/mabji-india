@@ -72,20 +72,18 @@ export default function FAQSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-white border border-gray-200 rounded-lg overflow-hidden"
+              className="bg-gray-200 text-black border border-gray-200 rounded-lg overflow-hidden"
             >
               <button
-                className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors cursor-pointer"
+                className="w-full px-6 py-4 text-left flex items-center justify-between transition-colors cursor-pointer"
                 onClick={() => toggleItem(faq.id)}
               >
-                <span className="font-semibold text-gray-900">
-                  {faq.question}
-                </span>
+                <span className="font-semibold">{faq.question}</span>
                 <motion.div
                   animate={{ rotate: openItems.includes(faq.id) ? 180 : 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <ChevronDown size={20} className="text-gray-600" />
+                  <ChevronDown size={20} className="text-black" />
                 </motion.div>
               </button>
               <motion.div
@@ -95,7 +93,7 @@ export default function FAQSection() {
                 className="overflow-hidden"
               >
                 <div className="px-6 pb-4">
-                  <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                  <p className="text-black leading-relaxed">{faq.answer}</p>
                 </div>
               </motion.div>
             </motion.div>

@@ -2,12 +2,16 @@
 import type { Metadata } from "next";
 import { ChevronDown, ChevronRight, Filter } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 import ProductGrid from "@/components/product-grid";
 import CollectionHeader from "@/components/collection-header";
 import ProductViewToggle from "@/components/product-view-toggle";
 import ProductSort from "@/components/product-sort";
 import ProductFilters from "@/components/product-filter";
 import ActiveFilters from "@/components/active-filter";
+import FilterDialog from "@/components/filter-dialog";
+import FilterButton from "@/components/filter-button";
+import StickyFilterBar from "@/components/sticky-filter-bar";
 
 // Mock data (in a real app, this would come from an API or CMS)
 const getCollectionData = (slug: string) => {
@@ -34,8 +38,11 @@ const getProducts = () => {
       name: "Linen Shirt - White",
       price: "$49",
       originalPrice: "$69",
-      image:
+      image: [
         "https://images.pexels.com/photos/8532616/pexels-photo-8532616.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
+        "https://images.pexels.com/photos/8532616/pexels-photo-8532616.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
+        "https://images.pexels.com/photos/8532616/pexels-photo-8532616.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
+      ],
       rating: 4.7,
       reviews: 89,
       isNew: true,
@@ -48,8 +55,11 @@ const getProducts = () => {
       name: "Denim Shorts - Blue",
       price: "$39",
       originalPrice: "$49",
-      image:
+      image: [
         "https://images.pexels.com/photos/588604/pexels-photo-588604.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
+        "https://images.pexels.com/photos/588604/pexels-photo-588604.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
+        "https://images.pexels.com/photos/588604/pexels-photo-588604.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
+      ],
       rating: 4.5,
       reviews: 124,
       isNew: false,
@@ -62,8 +72,11 @@ const getProducts = () => {
       name: "Cotton Dress - Floral",
       price: "$59",
       originalPrice: "$79",
-      image:
+      image: [
         "https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
+        "https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
+        "https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
+      ],
       rating: 4.8,
       reviews: 156,
       isNew: true,
@@ -76,8 +89,11 @@ const getProducts = () => {
       name: "Swim Trunks - Navy",
       price: "$35",
       originalPrice: "$45",
-      image:
+      image: [
         "https://images.pexels.com/photos/1484807/pexels-photo-1484807.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
+        "https://images.pexels.com/photos/1484807/pexels-photo-1484807.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
+        "https://images.pexels.com/photos/1484807/pexels-photo-1484807.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
+      ],
       rating: 4.6,
       reviews: 78,
       isNew: false,
@@ -90,8 +106,11 @@ const getProducts = () => {
       name: "Straw Hat - Natural",
       price: "$29",
       originalPrice: "$39",
-      image:
+      image: [
         "https://images.pexels.com/photos/35185/hats-fedora-hat-manufacture-stack.jpg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
+        "https://images.pexels.com/photos/35185/hats-fedora-hat-manufacture-stack.jpg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
+        "https://images.pexels.com/photos/35185/hats-fedora-hat-manufacture-stack.jpg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
+      ],
       rating: 4.4,
       reviews: 112,
       isNew: true,
@@ -104,8 +123,11 @@ const getProducts = () => {
       name: "Canvas Sneakers - White",
       price: "$45",
       originalPrice: "$65",
-      image:
+      image: [
         "https://images.pexels.com/photos/19090/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
+        "https://images.pexels.com/photos/19090/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
+        "https://images.pexels.com/photos/19090/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
+      ],
       rating: 4.6,
       reviews: 203,
       isNew: false,
@@ -118,8 +140,11 @@ const getProducts = () => {
       name: "Linen Pants - Beige",
       price: "$55",
       originalPrice: "$75",
-      image:
+      image: [
         "https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
+        "https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
+        "https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
+      ],
       rating: 4.7,
       reviews: 67,
       isNew: true,
@@ -132,8 +157,11 @@ const getProducts = () => {
       name: "Graphic T-Shirt - Black",
       price: "$25",
       originalPrice: "$35",
-      image:
+      image: [
         "https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
+        "https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
+        "https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
+      ],
       rating: 4.5,
       reviews: 145,
       isNew: false,
@@ -233,140 +261,51 @@ export default function CollectionPage({
     price: searchParams.price
       ? Array.isArray(searchParams.price)
         ? searchParams.price
-        : [searchParams.price]
+        : searchParams.price.split(",")
       : [],
     category: searchParams.category
       ? Array.isArray(searchParams.category)
         ? searchParams.category
-        : [searchParams.category]
+        : searchParams.category.split(",")
       : [],
     size: searchParams.size
       ? Array.isArray(searchParams.size)
         ? searchParams.size
-        : [searchParams.size]
+        : searchParams.size.split(",")
       : [],
     color: searchParams.color
       ? Array.isArray(searchParams.color)
         ? searchParams.color
-        : [searchParams.color]
+        : searchParams.color.split(",")
       : [],
   };
 
-  const sortBy = searchParams.sort || "featured";
-  const viewMode = searchParams.view === "list" ? "list" : "grid";
-  const showFilters = searchParams.filters === "open";
+  const gridSize = (searchParams.grid?.toString() || "4x4") as
+    | "2x2"
+    | "4x4"
+    | "6x6";
+  const sortBy = searchParams.sort?.toString() || "featured";
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Breadcrumb */}
-      <nav aria-label="Breadcrumb" className="bg-gray-50 border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <ol className="flex items-center space-x-2 text-sm text-gray-600">
-            <li>
-              <Link href="/" className="hover:text-gray-900 transition-colors">
-                Home
-              </Link>
-            </li>
-            <li>
-              <ChevronRight size={14} />
-            </li>
-            <li>
-              <Link
-                href="/men"
-                className="hover:text-gray-900 transition-colors"
-              >
-                Men
-              </Link>
-            </li>
-            <li>
-              <ChevronRight size={14} />
-            </li>
-            <li aria-current="page" className="text-gray-900 font-medium">
-              {collection.name}
-            </li>
-          </ol>
-        </div>
-      </nav>
-
+    <div className="mx-auto">
       <CollectionHeader collection={collection} />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Filters and Sort */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8 space-y-4 lg:space-y-0">
-          <div className="flex items-center space-x-4">
-            <Link
-              href={`/collections/${collection.slug}?${new URLSearchParams({
-                ...Object.fromEntries(
-                  Object.entries(searchParams).filter(
-                    ([key]) => key !== "filters"
-                  )
-                ),
-                filters: "open",
-              })}`}
-              className="flex items-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
-              aria-label="Open filters"
-            >
-              <Filter size={16} className="mr-2" />
-              Filters
-              <ChevronDown size={16} className="ml-2" />
-            </Link>
-            <span className="text-gray-600">
-              {collection.productCount} products
-            </span>
-          </div>
-
-          <div className="flex items-center space-x-4">
-            <ProductViewToggle
-              viewMode={viewMode}
-              searchParams={searchParams}
-              slug={collection.slug}
-            />
-            <ProductSort
-              sortBy={sortBy.toString()}
-              sortOptions={sortOptions}
-              searchParams={searchParams}
-              slug={collection.slug}
-            />
-          </div>
-        </div>
-
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Sidebar Filters */}
-          <ProductFilters
-            filterOptions={filterOptions}
-            activeFilters={activeFilters}
-            searchParams={searchParams}
-            slug={collection.slug}
-            showFilters={showFilters}
-          />
-
-          {/* Products Grid */}
-          <div className="flex-1">
-            <ActiveFilters
-              activeFilters={activeFilters}
-              filterOptions={filterOptions}
-              searchParams={searchParams}
-              slug={collection.slug}
-            />
-
-            <ProductGrid
-              products={products}
-              viewMode={viewMode}
-              basePath={`/men/${params.slug}`}
-            />
-
-            {/* Load More */}
-            <div className="text-center mt-12">
-              <Link
-                href="#"
-                className="inline-block px-8 py-3 bg-gray-900 text-white rounded-full font-semibold hover:bg-gray-800 transition-colors"
-                aria-label="Load more products"
-              >
-                Load More Products
-              </Link>
-            </div>
-          </div>
-        </div>
+      {/* Container for sticky behavior */}
+      <div className="relative min-h-[80vh]">
+        <StickyFilterBar
+          filterOptions={filterOptions}
+          activeFilters={activeFilters}
+          searchParams={searchParams}
+          gridSize={gridSize}
+        />
+        <ActiveFilters
+          activeFilters={activeFilters}
+          filterOptions={filterOptions}
+          searchParams={searchParams}
+        />
+        {/* <div className="max-w-full mx-auto"> */}
+        <ProductGrid products={products} gridSize={gridSize} />
+        {/* </div> */}
       </div>
     </div>
   );

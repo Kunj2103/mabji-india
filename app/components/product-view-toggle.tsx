@@ -1,50 +1,57 @@
 "use client";
 
-import { Grid, List } from "lucide-react";
+import { Grid2X2, Grid3X3, LayoutGrid } from "lucide-react";
 import Link from "next/link";
+import { usePathname, useSearchParams } from "next/navigation";
 
 export default function ProductViewToggle({
-  viewMode,
-  searchParams,
-  slug,
+  gridSize,
 }: {
-  viewMode: "grid" | "list";
-  searchParams: { [key: string]: string | string[] | undefined };
-  slug: string;
+  gridSize: "2x2" | "4x4" | "6x6";
 }) {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const createUrl = (size: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("grid", size);
+    return `${pathname}${params.toString() ? `?${params.toString()}` : ""}`;
+  };
+
   return (
     <div className="flex items-center space-x-2">
       <Link
-        href={`/collections/${slug}?${new URLSearchParams({
-          ...Object.fromEntries(
-            Object.entries(searchParams).filter(([key]) => key !== "view")
-          ),
-          view: "grid",
-        })}`}
+        href={createUrl("2x2")}
         className={`p-2 rounded ${
-          viewMode === "grid"
+          gridSize === "2x2"
             ? "bg-gray-900 text-white"
             : "bg-gray-100 text-gray-600"
         }`}
-        aria-label="Grid view"
+        aria-label="2x2 grid view"
       >
-        <Grid size={16} />
+        <Grid2X2 size={16} />
       </Link>
       <Link
-        href={`/collections/${slug}?${new URLSearchParams({
-          ...Object.fromEntries(
-            Object.entries(searchParams).filter(([key]) => key !== "view")
-          ),
-          view: "list",
-        })}`}
+        href={createUrl("4x4")}
         className={`p-2 rounded ${
-          viewMode === "list"
+          gridSize === "4x4"
             ? "bg-gray-900 text-white"
             : "bg-gray-100 text-gray-600"
         }`}
-        aria-label="List view"
+        aria-label="4x4 grid view"
       >
-        <List size={16} />
+        <Grid3X3 size={16} />
+      </Link>
+      <Link
+        href={createUrl("6x6")}
+        className={`p-2 rounded ${
+          gridSize === "6x6"
+            ? "bg-gray-900 text-white"
+            : "bg-gray-100 text-gray-600"
+        }`}
+        aria-label="6x6 grid view"
+      >
+        <LayoutGrid size={16} />
       </Link>
     </div>
   );

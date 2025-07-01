@@ -1,141 +1,186 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Star, ArrowRight } from "lucide-react";
+import { Star } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+import useEmblaCarousel from "embla-carousel-react";
+import { useCallback, useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const reviews = [
+interface Review {
+  id: number;
+  image: string;
+  comment: string;
+  customerName: string;
+  purchaseDate: string;
+  fullComment?: string;
+}
+
+const reviews: Review[] = [
   {
     id: 1,
-    name: "Sarah Johnson",
-    country: "United States",
-    date: "2024-01-15",
-    rating: 5,
-    review:
-      "Absolutely love the quality and style! The delivery was super fast and the customer service was exceptional.",
-    avatar:
-      "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    image:
+      "https://images.pexels.com/photos/1721937/pexels-photo-1721937.jpeg?auto=compress&cs=tinysrgb&w=800",
+    comment:
+      "Ankit and team were super accommodating to any changes to the design. I added a hidden halo and increased the width to 2.0mm. The ring took about a month to arrive from the initial order...",
+    fullComment:
+      "Ankit and team were super accommodating to any changes to the design. I added a hidden halo and increased the width to 2.0mm. The ring took about a month to arrive from the initial order, but it was worth the wait. The quality is exceptional!",
+    customerName: "Erika",
+    purchaseDate: "22/10/2023",
   },
   {
     id: 2,
-    name: "Emily Chen",
-    country: "Canada",
-    date: "2024-01-12",
-    rating: 4,
-    review:
-      "Great selection and beautiful designs. The fit was perfect and the material feels premium.",
-    avatar:
-      "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    image:
+      "https://images.pexels.com/photos/1721936/pexels-photo-1721936.jpeg?auto=compress&cs=tinysrgb&w=800",
+    comment:
+      "I ordered a customized version of a stock ring that had a fixed center stone size. I upgraded to a larger center stone, which required Ankit to change the rest of the ring to accommodate...",
+    fullComment:
+      "I ordered a customized version of a stock ring that had a fixed center stone size. I upgraded to a larger center stone, which required Ankit to change the rest of the ring to accommodate the new size. The result is stunning and exactly what I wanted!",
+    customerName: "Alexa Carol",
+    purchaseDate: "22/12/2023",
   },
   {
     id: 3,
-    name: "Maria Garcia",
-    country: "Spain",
-    date: "2024-01-10",
-    rating: 5,
-    review:
-      "Outstanding experience from start to finish. Will definitely shop here again!",
-    avatar:
-      "https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    image:
+      "https://images.pexels.com/photos/1721938/pexels-photo-1721938.jpeg?auto=compress&cs=tinysrgb&w=800",
+    comment:
+      "The ring is absolutely stunning! And it came quicker than expected. It originally was not going to come in time for the engagement, but it arrive way earlier than expected.",
+    customerName: "Avery Preston",
+    purchaseDate: "27/12/2023",
   },
   {
     id: 4,
-    name: "David Kim",
-    country: "South Korea",
-    date: "2024-01-08",
-    rating: 4,
-    review:
-      "High-quality products with excellent attention to detail. Highly recommended!",
-    avatar:
-      "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    image:
+      "https://images.pexels.com/photos/1721939/pexels-photo-1721939.jpeg?auto=compress&cs=tinysrgb&w=800",
+    comment:
+      "These studs are so beautifully made. The quality, colour, and size of the diamonds are exactly what I wanted. I received them as a graduation gift and could not be happier. The posts are...",
+    fullComment:
+      "These studs are so beautifully made. The quality, colour, and size of the diamonds are exactly what I wanted. I received them as a graduation gift and could not be happier. The posts are secure and comfortable to wear all day.",
+    customerName: "Victoria",
+    purchaseDate: "31/12/2023",
   },
 ];
 
-export default function ReviewsSection() {
+export default function ReviewSection() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "start",
+    containScroll: "trimSnaps",
+    dragFree: true,
+  });
+
+  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
+  const [nextBtnEnabled, setNextBtnEnabled] = useState(true);
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setPrevBtnEnabled(emblaApi.canScrollPrev());
+    setNextBtnEnabled(emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+  }, [emblaApi, onSelect]);
+
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            What Our Customers Say
-          </h2>
-          <p className="text-xl text-gray-600">
-            Real reviews from real customers
+    <div className="min-h-screen bg-white py-16">
+      <div className="container mx-auto px-8 xl:px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-medium mb-4">Customer Reviews</h2>
+          <div className="flex items-center justify-center gap-1 mb-4">
+            {[...Array(5)].map((_, i) => (
+              <Star
+                key={i}
+                className="w-6 h-6 text-yellow-400 fill-yellow-400"
+              />
+            ))}
+          </div>
+          <p className="text-gray-600">
+            3460+ Verified Reviews with an Average Rating of 4.98 Stars
           </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          {reviews.map((review, index) => (
-            <motion.div
-              key={review.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div className="flex items-center mb-4">
-                <Image
-                  src={review.avatar}
-                  alt={review.name}
-                  width={400}
-                  height={100}
-                  className="w-12 h-12 rounded-full object-cover mr-4"
-                />
-                <div>
-                  <h4 className="font-semibold text-gray-900">{review.name}</h4>
-                  <p className="text-sm text-gray-600">{review.country}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center mb-3">
-                <div className="flex text-yellow-400 mr-2">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      size={16}
-                      className={
-                        i < review.rating ? "fill-current" : "text-gray-300"
-                      }
-                    />
-                  ))}
-                </div>
-                <span className="text-sm text-gray-600">{review.date}</span>
-              </div>
-
-              <p className="text-gray-700 text-sm leading-relaxed">
-                {review.review}
-              </p>
-            </motion.div>
-          ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <Link href="/reviews">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition-colors cursor-pointer"
-            >
-              View All Reviews
-              <ArrowRight className="ml-2" size={16} />
-            </motion.button>
-          </Link>
-        </motion.div>
+        <div className="relative">
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex gap-6 px-1">
+              {reviews.map((review) => (
+                <div
+                  key={review.id}
+                  className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] md:flex-[0_0_33.333%] lg:flex-[0_0_calc(25%-18px)]"
+                >
+                  <div className="bg-white rounded-lg border border-gray-200 overflow-hidden h-full flex flex-col">
+                    <div className="aspect-[3/4] relative flex-1">
+                      <Image
+                        src={review.image}
+                        alt={`Review by ${review.customerName}`}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="p-6 text-center flex-1 flex flex-col justify-between">
+                      <p className="text-gray-700 mb-4">{review.comment}</p>
+                      <div className="text-sm text-gray-500 mt-auto">
+                        <p>Verified Purchase on {review.purchaseDate}</p>
+                        <p className="font-medium mt-1">
+                          {review.customerName}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              {/* View More Card */}
+              <div className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] md:flex-[0_0_33.333%] lg:flex-[0_0_calc(25%-18px)]">
+                <div className="bg-white rounded-lg h-full flex items-center justify-center p-6">
+                  <div className="text-center">
+                    <p className="text-2xl font-medium mb-2">
+                      3460+ Verified Reviews
+                    </p>
+                    <p className="text-xl mb-6">Averaging 4.98 Stars</p>
+                    <button className="bg-black text-white px-8 py-3 rounded-none cursor-pointer">
+                      VIEW MORE
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Navigation Buttons */}
+          <button
+            onClick={scrollPrev}
+            disabled={!prevBtnEnabled}
+            className={`absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center ${
+              !prevBtnEnabled
+                ? "opacity-50 cursor-not-allowed"
+                : "hover:bg-gray-50"
+            }`}
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          <button
+            onClick={scrollNext}
+            disabled={!nextBtnEnabled}
+            className={`absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center ${
+              !nextBtnEnabled
+                ? "opacity-50 cursor-not-allowed"
+                : "hover:bg-gray-50"
+            }`}
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        </div>
       </div>
-    </section>
+    </div>
   );
 }

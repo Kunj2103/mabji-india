@@ -9,16 +9,15 @@ export default function SingleBanner() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="my-16"
     >
       <div
-        className="h-[400px] bg-cover bg-center relative overflow-hidden"
+        className="h-svh bg-cover bg-center relative overflow-hidden"
         style={{
           backgroundImage:
             "url('https://images.pexels.com/photos/7679720/pexels-photo-7679720.jpeg?auto=compress&cs=tinysrgb&w=1600&h=800&fit=crop')",
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/60 to-pink-900/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-white/60" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center text-white max-w-3xl px-4">
             <motion.h2
@@ -43,7 +42,7 @@ export default function SingleBanner() {
               transition={{ duration: 0.6, delay: 0.6 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-3 rounded-full font-semibold text-lg hover:from-pink-600 hover:to-purple-600 transition-all"
+              className="bg-gradient-to-r px-8 py-3 bg-white text-black rounded-full font-semibold text-lg transition-all"
             >
               Shop Sale
             </motion.button>

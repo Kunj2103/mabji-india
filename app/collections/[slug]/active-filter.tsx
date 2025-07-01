@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { X } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 
 interface FilterOption {
   value: string;
@@ -19,14 +20,13 @@ interface ActiveFilters {
 export default function ActiveFilters({
   activeFilters,
   filterOptions,
-  searchParams,
   slug,
 }: {
   activeFilters: ActiveFilters;
   filterOptions: FilterOptions;
-  searchParams: { [key: string]: string | string[] | undefined };
   slug: string;
 }) {
+  const searchParams = useSearchParams();
   if (!Object.values(activeFilters).some((arr) => arr.length > 0)) {
     return null;
   }

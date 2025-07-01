@@ -1,89 +1,142 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-
-interface Product {
-  id: number;
-  name: string;
-  // slug: string;
-  price: string;
-  originalPrice: string;
-  image: string;
-  rating: number;
-  reviews: number;
-}
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useCallback, useEffect } from "react";
+import { motion } from "framer-motion";
+import useEmblaCarousel from "embla-carousel-react";
 
 interface Props {
-  product: Product;
-  index: number;
+  product: {
+    id: string | number;
+    name: string;
+    price: number;
+    salePrice?: number;
+    image: string[];
+    slug?: string;
+  };
   basePath?: string;
 }
 
 export default function ProductCard({
   product,
-  index,
   basePath = "/products",
 }: Props) {
-  const productUrl = `${basePath}/${product.id}`;
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "start",
+    loop: true,
+    skipSnaps: false,
+  });
+
+  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
+  const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setPrevBtnEnabled(emblaApi.canScrollPrev());
+    setNextBtnEnabled(emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+  }, [emblaApi, onSelect]);
+
+  // If there are no images, don't show navigation arrows
+  const hasMultipleImages = product.image?.length > 1;
 
   return (
     <motion.div
-      key={product.id}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      viewport={{ once: true }}
-      className="group cursor-pointer"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 20 }}
+      transition={{ duration: 0.3 }}
+      className="group relative"
     >
-      <Link href={productUrl}>
-        <div className="relative overflow-hidden rounded-lg mb-4">
-          <Image
-            width={300}
-            height={100}
-            src={product.image}
-            alt={product.name}
-            className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
-          />
-          <div className="absolute top-4 right-4">
-            <span className="bg-red-500 text-white px-2 py-1 rounded text-sm font-semibold">
-              SALE
-            </span>
+      <Link href={`${basePath}/${product.id}`} className="block">
+        <div className="aspect-[3/4] w-full overflow-hidden bg-gray-100 relative">
+          <div className="h-full" ref={emblaRef}>
+            <div className="flex h-full touch-pan-y">
+              {product.image?.map((src, index) => (
+                <div key={index} className="relative flex-[0_0_100%] min-w-0">
+                  <Image
+                    src={src}
+                    alt={`${product.name} - View ${index + 1}`}
+                    fill
+                    className="object-cover object-center transition-transform duration-300"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={index === 0}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileHover={{ opacity: 1 }}
-            className="absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity"
-          >
-            <button className="bg-white text-black px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors cursor-pointer">
-              Quick View
-            </button>
-          </motion.div>
+
+          {product.salePrice && (
+            <div className="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 text-xs font-medium rounded z-10">
+              Sale
+            </div>
+          )}
+
+          {/* Navigation Arrows - Only visible on hover and when there are multiple images */}
+          {hasMultipleImages && (
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10">
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  scrollPrev();
+                }}
+                disabled={!prevBtnEnabled}
+                className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-1.5 hover:bg-white transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  scrollNext();
+                }}
+                disabled={!nextBtnEnabled}
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-1.5 hover:bg-white transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                aria-label="Next image"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          )}
+        </div>
+        <div className="mt-4 space-y-1">
+          <h3 className="text-sm text-gray-700">{product.name}</h3>
+          <div className="text-sm text-gray-500">
+            {product.salePrice ? (
+              <>
+                <span className="text-red-600">
+                  Rs. {product.salePrice.toLocaleString()}
+                </span>
+                <span className="ml-2 line-through">
+                  Rs. {product.price.toLocaleString()}
+                </span>
+              </>
+            ) : (
+              <span>Rs. {product.price.toLocaleString()}</span>
+            )}
+          </div>
         </div>
       </Link>
-      <h3 className="font-semibold text-gray-900 mb-2">{product.name}</h3>
-
-      <div className="flex items-center mb-2">
-        <div className="flex text-yellow-400 text-sm">
-          {[...Array(5)].map((_, i) => (
-            <span
-              key={i}
-              className={i < Math.floor(product.rating) ? "" : "text-gray-300"}
-            >
-              ★
-            </span>
-          ))}
-        </div>
-        <span className="text-gray-600 text-sm ml-2">({product.reviews})</span>
-      </div>
-
-      <div className="flex items-center space-x-2">
-        <span className="text-xl font-bold text-gray-900">{product.price}</span>
-        <span className="text-gray-500 line-through">
-          {product.originalPrice}
-        </span>
-      </div>
     </motion.div>
   );
 }

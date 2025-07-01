@@ -1,40 +1,42 @@
 import ProductCard from "./product-card";
+import { Product } from "@/lib/types";
 
 interface ProductGridProps {
-  products: Array<{
-    id: number;
-    slug: string;
-    name: string;
-    price: string;
-    originalPrice?: string;
-    image: string;
-    rating: number;
-    reviews: number;
-    isNew?: boolean;
-  }>;
-  viewMode?: "grid" | "list";
+  products: Product[];
+  gridSize?: "2x2" | "4x4" | "6x6";
   basePath?: string;
 }
 
 export default function ProductGrid({
   products,
-  viewMode = "grid",
+  gridSize = "4x4",
   basePath = "/products",
 }: ProductGridProps) {
-  if (viewMode === "list") {
-    return (
-      <div className="space-y-6">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} basePath={basePath} />
-        ))}
-      </div>
-    );
-  }
+  // Define grid columns based on grid size
+  const gridCols = {
+    "2x2": "grid-cols-1 sm:grid-cols-2",
+    "4x4": "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4",
+    "6x6": "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6",
+  }[gridSize];
+
+  // Limit number of products based on grid size
+  const maxProducts = {
+    "2x2": 4,
+    "4x4": 16,
+    "6x6": 36,
+  }[gridSize];
+
+  const displayProducts = products.slice(0, maxProducts);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      {products.map((product) => (
-        <ProductCard key={product.id} product={product} basePath={basePath} />
+    <div className={`grid ${gridCols} gap-1 md:gap-2 lg:gap-4`}>
+      {displayProducts.map((product, index) => (
+        <ProductCard
+          key={`${product.id}-${index}`}
+          product={product}
+          basePath={basePath}
+          index={index}
+        />
       ))}
     </div>
   );

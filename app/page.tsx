@@ -2,7 +2,7 @@ import CategoryCollection from "./components/category-collection";
 import FeaturesAndProducts from "./components/featured-products";
 import SingleBanner from "./components/ui/banner";
 import Carousel from "./components/ui/carousel";
-import Rowlist from "./components/ui/rowlist";
+import FullHeightGrid from "./components/ui/full-height-grid";
 
 const banners = [
   {
@@ -228,15 +228,33 @@ const featuredProducts = [
   },
 ];
 
+const gridItems = [
+  {
+    id: "shirts",
+    title: "SHIRTS",
+    subtitle: "New Collection",
+    image: "https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg",
+    href: "/men/shirts",
+    size: "half" as const,
+  },
+  {
+    id: "trousers",
+    title: "TROUSERS",
+    subtitle: "Spring/Summer 2024",
+    image: "https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg",
+    href: "/men/trousers",
+    size: "half" as const,
+  },
+];
+
 export default function Home() {
   return (
     <>
-      <Carousel slides={banners} />
-      <SingleBanner
-        imageSrc="https://placehold.co/1200x400?text=Slide+3"
-        alt="Single banner"
-      />
-      <Rowlist products={data} />
+      <Carousel />
+      <SingleBanner />
+      <div className="min-h-screen">
+        <FullHeightGrid items={gridItems} />
+      </div>
       <CategoryCollection />
 
       <FeaturesAndProducts products={featuredProducts} />

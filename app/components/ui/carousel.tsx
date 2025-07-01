@@ -65,12 +65,18 @@ export default function Carousel() {
   }, [emblaApi]);
 
   return (
-    <div className="relative h-[600px] overflow-hidden" ref={emblaRef}>
-      <div className="flex">
+    <div
+      className="relative h-[calc(100svh-128px)] overflow-hidden"
+      ref={emblaRef}
+    >
+      <div className="flex h-full">
         {heroSlides.map((slide, index) => (
-          <div key={slide.id} className="flex-[0_0_100%] min-w-0 relative">
+          <div
+            key={slide.id}
+            className="h-full flex-[0_0_100%] min-w-0 relative"
+          >
             <div
-              className="h-[600px] bg-cover bg-center relative"
+              className="h-full bg-cover bg-center relative"
               style={{ backgroundImage: `url(${slide.image})` }}
             >
               <div className="absolute inset-0 bg-black/40" />

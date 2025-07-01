@@ -22,7 +22,7 @@ export default function CommitmentSection() {
     },
   ];
   return (
-    <section className="py-16 bg-gradient-to-r from-blue-900 to-purple-900 text-white">
+    <section className="py-16 bg-gradient-to-r ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -42,7 +42,7 @@ export default function CommitmentSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="rounded-xl bg-blue-50 p-6 text-center hover:bg-blue-100 transition shadow-sm"
+                className="rounded-xl bg-gray-200 p-6 text-center hover:bg-gray-300 transition shadow-sm"
               >
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
                   {feature.title}

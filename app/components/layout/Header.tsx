@@ -285,19 +285,12 @@ export default function Header() {
               {(["women", "men", "kids"] as const).map((item) => (
                 <div
                   key={item}
-                  className="relative h-full flex items-center"
+                  className="relative h-full flex items-center cursor-pointer"
                   onMouseEnter={() => setHoveredMenu(item)}
                   onMouseLeave={() => setHoveredMenu(null)}
                 >
-                  <Link
-                    href={`/${item}`}
-                    className={`text-sm font-semibold uppercase hover:underline flex items-center ${
-                      hoveredMenu === item ? "text-blue-600" : "text-black"
-                    }`}
-                  >
-                    {item}
-                    <ChevronDown size={16} className="ml-1" />
-                  </Link>
+                  {item}
+                  <ChevronDown size={16} className="ml-1" />
                 </div>
               ))}
             </nav>

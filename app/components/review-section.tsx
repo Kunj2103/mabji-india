@@ -5,6 +5,7 @@ import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface Review {
   id: number;
@@ -61,6 +62,7 @@ const reviews: Review[] = [
 ];
 
 export default function ReviewSection() {
+  const router = useRouter();
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
     containScroll: "trimSnaps",
@@ -147,7 +149,10 @@ export default function ReviewSection() {
                       3460+ Verified Reviews
                     </p>
                     <p className="text-xl mb-6">Averaging 4.98 Stars</p>
-                    <button className="bg-black text-white px-8 py-3 rounded-none cursor-pointer">
+                    <button
+                      className="bg-black text-white px-8 py-3 rounded-none cursor-pointer"
+                      onClick={() => router.push("/reviews")}
+                    >
                       VIEW MORE
                     </button>
                   </div>
@@ -160,7 +165,7 @@ export default function ReviewSection() {
           <button
             onClick={scrollPrev}
             disabled={!prevBtnEnabled}
-            className={`absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center ${
+            className={`cursor-pointer absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center ${
               !prevBtnEnabled
                 ? "opacity-50 cursor-not-allowed"
                 : "hover:bg-gray-50"
@@ -171,7 +176,7 @@ export default function ReviewSection() {
           <button
             onClick={scrollNext}
             disabled={!nextBtnEnabled}
-            className={`absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center ${
+            className={`cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center ${
               !nextBtnEnabled
                 ? "opacity-50 cursor-not-allowed"
                 : "hover:bg-gray-50"

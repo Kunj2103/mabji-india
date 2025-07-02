@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 import FilterButton from "./filter-button";
 import ProductViewToggle from "./product-view-toggle";
 import FilterDialog from "./filter-dialog";
@@ -31,30 +31,7 @@ export default function StickyFilterBar({
   searchParams,
   gridSize,
 }: StickyFilterBarProps) {
-  const [isSticky, setIsSticky] = useState(false);
-  const filterBarRef = useRef<HTMLDivElement>(null);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!filterBarRef.current) return;
-
-      const filterBarTop = filterBarRef.current.getBoundingClientRect().top;
-      const headerHeight = 64;
-
-      setIsSticky(filterBarTop <= headerHeight);
-    };
-
-    // Add scroll event listener
-    window.addEventListener("scroll", handleScroll);
-
-    // Initial check
-    handleScroll();
-
-    // Cleanup
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
     <>
@@ -65,16 +42,9 @@ export default function StickyFilterBar({
         activeFilters={activeFilters}
         searchParams={searchParams}
       />
-      <div
-        ref={filterBarRef}
-        className={`${
-          isSticky
-            ? "sticky top-[64px] z-40 bg-white shadow-md py-4 transition-all duration-300"
-            : "bg-transparent py-4"
-        }`}
-      >
+      <div className="sticky top-16 z-40 bg-white border-b border-gray-200">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 py-4">
             <FilterButton
               filterOptions={filterOptions}
               activeFilters={activeFilters}

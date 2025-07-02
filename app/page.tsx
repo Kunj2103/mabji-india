@@ -1,5 +1,3 @@
-import CategoryCollection from "./components/category-collection";
-import FeaturesAndProducts from "./components/featured-products";
 import SingleBanner from "./components/ui/banner";
 import Carousel from "./components/ui/carousel";
 import FullHeightGrid from "./components/ui/full-height-grid";
@@ -19,6 +17,24 @@ const gridItems = [
     subtitle: "Spring/Summer 2024",
     image: "https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg",
     href: "/men/trousers",
+    size: "half" as const,
+  },
+  {
+    id: "dresses",
+    title: "DRESSES",
+    subtitle: "Elegant Collection",
+    image:
+      "https://images.pexels.com/photos/7679720/pexels-photo-7679720.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
+    href: "/women/dresses",
+    size: "half" as const,
+  },
+  {
+    id: "accessories",
+    title: "ACCESSORIES",
+    subtitle: "Complete Your Look",
+    image:
+      "https://images.pexels.com/photos/8532616/pexels-photo-8532616.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
+    href: "/accessories",
     size: "half" as const,
   },
 ];
@@ -119,9 +135,8 @@ export default function Home() {
       <div className="min-h-screen">
         <FullHeightGrid items={gridItems} />
       </div>
-      <CategoryCollection />
 
-      <FeaturesAndProducts products={featuredProducts} />
+      {/* <FeaturesAndProducts products={featuredProducts} /> */}
     </>
   );
 }

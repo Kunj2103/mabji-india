@@ -285,7 +285,7 @@ export default function Header() {
               {(["women", "men", "kids"] as const).map((item) => (
                 <div
                   key={item}
-                  className="relative h-full flex items-center cursor-pointer"
+                  className="relative h-full flex items-center cursor-pointer uppercase text-sm font-semibold"
                   onMouseEnter={() => setHoveredMenu(item)}
                   onMouseLeave={() => setHoveredMenu(null)}
                 >

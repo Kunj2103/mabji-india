@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import FilterButton from "./filter-button";
-import ProductViewToggle from "./product-view-toggle";
 import FilterDialog from "./filter-dialog";
 
 interface FilterOption {
@@ -22,14 +21,12 @@ interface StickyFilterBarProps {
   filterOptions: FilterOptions;
   activeFilters: ActiveFilters;
   searchParams: { [key: string]: string | string[] | undefined };
-  gridSize: "2x2" | "4x4" | "6x6";
 }
 
 export default function StickyFilterBar({
   filterOptions,
   activeFilters,
   searchParams,
-  gridSize,
 }: StickyFilterBarProps) {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
@@ -52,9 +49,9 @@ export default function StickyFilterBar({
               setIsFilterOpen={setIsFilterOpen}
             />
 
-            <div className="flex items-center gap-4">
+            {/* <div className="flex items-center gap-4">
               <ProductViewToggle gridSize={gridSize} />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

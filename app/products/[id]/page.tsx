@@ -11,6 +11,7 @@ const product = {
   id: 1,
   name: "100% LINEN SLIM-FIT SHIRT",
   price: 5790.0,
+  originalPrice: 6990.0,
   description:
     "Slim-fit shirt made of 100% linen fabric. Featuring a spread collar and long sleeves with buttoned cuffs. Button-up front.",
   details: [
@@ -93,7 +94,12 @@ export default function ProductPage() {
                 />
               </div>
               <h2 className="text-sm truncate">{product.name}</h2>
-              <p className="text-sm">Rs. {product.price.toLocaleString()}</p>
+              <p className="text-sm line-through text-gray-500">
+                Rs. {product.originalPrice.toLocaleString()}
+              </p>
+              <p className="text-sm text-red-500">
+                Rs. {product.price.toLocaleString()}
+              </p>
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 className="flex items-center gap-2 hover:opacity-80 transition-opacity"
@@ -118,11 +124,11 @@ export default function ProductPage() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-screen-2xl px-4 py-10">
+      <div className="mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           {/* Left Column - Image Gallery */}
           <div className="lg:col-span-3 lg:max-h-[90vh] overflow-y-auto hide-scrollbar">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-1">
               {product.images.map((image, index) => (
                 <div key={index} className="relative aspect-[3/4]">
                   <Image
@@ -151,9 +157,14 @@ export default function ProductPage() {
                   <div className="flex items-start justify-between">
                     <div>
                       <h1 className="text-xl">{product.name}</h1>
-                      <p className="mt-2 text-lg">
-                        Rs. {product.price.toLocaleString()}
-                      </p>
+                      <div className="flex items-center gap-2">
+                        <p className="mt-2 text-lg text-gray-500 line-through">
+                          Rs. {product.originalPrice.toLocaleString()}
+                        </p>
+                        <p className="mt-2 text-lg text-red-500">
+                          Rs. {product.price.toLocaleString()}
+                        </p>
+                      </div>
                     </div>
                   </div>
 
@@ -275,7 +286,7 @@ export default function ProductPage() {
           <h2 className="text-2xl font-bold text-gray-900 mb-8">
             You may also like
           </h2>
-          <ProductGrid products={mockProducts} gridSize="4x4" />
+          <ProductGrid products={mockProducts} />
         </div>
       </div>
 

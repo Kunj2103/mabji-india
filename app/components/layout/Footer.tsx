@@ -18,9 +18,14 @@ export default function Footer() {
       { label: "WORK FOR MANGO", href: "#" },
       { label: "PRESS", href: "#" },
     ],
-    outlet: [
-      { label: "MANGO OUTLET", href: "#" },
-      { label: "SITE MAP", href: "#" },
+    // outlet: [
+    //   { label: "MANGO OUTLET", href: "#" },
+    //   { label: "SITE MAP", href: "#" },
+    // ],
+    legal: [
+      { label: "PRIVACY POLICY AND COOKIES", href: "#" },
+      { label: "TERMS AND CONDITIONS", href: "#" },
+      { label: "ETHICS CHANNEL", href: "#" },
     ],
     responsibility: [
       { label: "RESPONSIBILITY", href: "#" },
@@ -37,12 +42,6 @@ export default function Footer() {
     { label: "PINTEREST", href: "#" },
     { label: "X", href: "#" },
     { label: "LINKEDIN", href: "#" },
-  ];
-
-  const legalLinks = [
-    { label: "PRIVACY POLICY AND COOKIES", href: "#" },
-    { label: "TERMS AND CONDITIONS", href: "#" },
-    { label: "ETHICS CHANNEL", href: "#" },
   ];
 
   return (
@@ -95,7 +94,7 @@ export default function Footer() {
               ))}
             </div>
             <div>
-              {footerLinks.outlet.map((link) => (
+              {footerLinks.legal.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
@@ -140,20 +139,7 @@ export default function Footer() {
       {/* Bottom Footer */}
       <div className="py-6">
         <div className="max-w-screen-2xl mx-auto px-4">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center gap-6">
-              <div className="flex gap-6">
-                {legalLinks.map((link) => (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    className="text-sm hover:opacity-70"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
+          <div className="flex flex-wrap items-center justify-center gap-4">
             <div className="text-sm text-gray-600">
               © {new Date().getFullYear()} MABJI INDIA All rights reserved
             </div>

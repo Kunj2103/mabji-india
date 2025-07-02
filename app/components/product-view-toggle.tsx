@@ -1,6 +1,6 @@
 "use client";
 
-import { Grid2X2, Grid3X3, LayoutGrid } from "lucide-react";
+import { LayoutGrid } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 
@@ -20,7 +20,7 @@ export default function ProductViewToggle({
 
   return (
     <div className="flex items-center space-x-2">
-      <Link
+      {/* <Link
         href={createUrl("2x2")}
         className={`p-2 rounded ${
           gridSize === "2x2"
@@ -41,15 +41,15 @@ export default function ProductViewToggle({
         aria-label="4x4 grid view"
       >
         <Grid3X3 size={16} />
-      </Link>
+      </Link> */}
       <Link
-        href={createUrl("6x6")}
+        href={createUrl("4x4")}
         className={`p-2 rounded ${
-          gridSize === "6x6"
+          gridSize === "4x4"
             ? "bg-gray-900 text-white"
             : "bg-gray-100 text-gray-600"
         }`}
-        aria-label="6x6 grid view"
+        aria-label="4x4 grid view"
       >
         <LayoutGrid size={16} />
       </Link>

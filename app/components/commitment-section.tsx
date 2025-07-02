@@ -20,10 +20,18 @@ export default function CommitmentSection() {
       title: "24/7 Support",
       description: "Round-the-clock customer service",
     },
+    {
+      title: "Mabji's Trust",
+      description: "100% satisfaction guaranteed",
+    },
+    {
+      title: "Unbeatable Market Price",
+      description: "We offer the best prices in the market",
+    },
   ];
   return (
     <section className="py-16 bg-gradient-to-r ">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -31,10 +39,7 @@ export default function CommitmentSection() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Commitment to Excellence
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-6 mb-16">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
@@ -42,7 +47,7 @@ export default function CommitmentSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="rounded-xl bg-gray-200 p-6 text-center hover:bg-gray-300 transition shadow-sm"
+                className="flex flex-col items-center justify-center rounded-xl bg-gray-200 p-6 text-center hover:bg-gray-300 transition shadow-sm"
               >
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
                   {feature.title}

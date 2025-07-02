@@ -38,11 +38,8 @@ const getProducts = () => {
       name: "Silk Blouse - White",
       price: "$89",
       originalPrice: "$129",
-      image: [
+      image:
         "https://images.pexels.com/photos/994523/pexels-photo-994523.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/994523/pexels-photo-994523.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/994523/pexels-photo-994523.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.8,
       reviews: 156,
       isNew: true,
@@ -55,11 +52,8 @@ const getProducts = () => {
       name: "High Waist Jeans - Blue",
       price: "$79",
       originalPrice: "$99",
-      image: [
+      image:
         "https://images.pexels.com/photos/1082529/pexels-photo-1082529.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/1082529/pexels-photo-1082529.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/1082529/pexels-photo-1082529.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.6,
       reviews: 234,
       isNew: false,
@@ -72,11 +66,8 @@ const getProducts = () => {
       name: "Floral Maxi Dress",
       price: "$129",
       originalPrice: "$159",
-      image: [
+      image:
         "https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.9,
       reviews: 189,
       isNew: true,
@@ -89,11 +80,8 @@ const getProducts = () => {
       name: "Cashmere Cardigan - Beige",
       price: "$149",
       originalPrice: "$199",
-      image: [
+      image:
         "https://images.pexels.com/photos/994523/pexels-photo-994523.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/994523/pexels-photo-994523.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/994523/pexels-photo-994523.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.7,
       reviews: 98,
       isNew: false,
@@ -106,11 +94,8 @@ const getProducts = () => {
       name: "Leather Handbag - Brown",
       price: "$199",
       originalPrice: "$249",
-      image: [
+      image:
         "https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.8,
       reviews: 167,
       isNew: true,
@@ -123,11 +108,8 @@ const getProducts = () => {
       name: "Ankle Boots - Black",
       price: "$159",
       originalPrice: "$199",
-      image: [
+      image:
         "https://images.pexels.com/photos/2526878/pexels-photo-2526878.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/2526878/pexels-photo-2526878.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/2526878/pexels-photo-2526878.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.6,
       reviews: 203,
       isNew: false,
@@ -140,11 +122,8 @@ const getProducts = () => {
       name: "Satin Skirt - Navy",
       price: "$89",
       originalPrice: "$119",
-      image: [
+      image:
         "https://images.pexels.com/photos/994523/pexels-photo-994523.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/994523/pexels-photo-994523.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/994523/pexels-photo-994523.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.5,
       reviews: 78,
       isNew: true,
@@ -157,11 +136,8 @@ const getProducts = () => {
       name: "Silk Scarf - Pink",
       price: "$49",
       originalPrice: "$69",
-      image: [
+      image:
         "https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.7,
       reviews: 67,
       isNew: true,
@@ -174,9 +150,8 @@ const getProducts = () => {
       name: "Linen Pants - Beige",
       price: "$55",
       originalPrice: "$75",
-      image: [
+      image:
         "https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-      ],
       rating: 4.7,
       reviews: 145,
       isNew: false,
@@ -295,12 +270,6 @@ export default function CollectionPage({
       : [],
   };
 
-  const gridSize = (searchParams.grid?.toString() || "4x4") as
-    | "2x2"
-    | "4x4"
-    | "6x6";
-  const sortBy = searchParams.sort?.toString() || "featured";
-
   return (
     <div className="mx-auto">
       <CollectionHeader collection={collection} />
@@ -311,7 +280,6 @@ export default function CollectionPage({
           filterOptions={filterOptions}
           activeFilters={activeFilters}
           searchParams={searchParams}
-          gridSize={gridSize}
         />
         <ActiveFilters
           activeFilters={activeFilters}
@@ -319,7 +287,7 @@ export default function CollectionPage({
           searchParams={searchParams}
         />
         {/* <div className="max-w-full mx-auto"> */}
-        <ProductGrid products={products} gridSize={gridSize} />
+        <ProductGrid products={products} />
         {/* </div> */}
       </div>
     </div>

@@ -38,11 +38,8 @@ const getProducts = () => {
       name: "Linen Shirt - White",
       price: "$49",
       originalPrice: "$69",
-      image: [
+      image:
         "https://images.pexels.com/photos/8532616/pexels-photo-8532616.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/8532616/pexels-photo-8532616.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/8532616/pexels-photo-8532616.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.7,
       reviews: 89,
       isNew: true,
@@ -55,11 +52,8 @@ const getProducts = () => {
       name: "Denim Shorts - Blue",
       price: "$39",
       originalPrice: "$49",
-      image: [
+      image:
         "https://images.pexels.com/photos/588604/pexels-photo-588604.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/588604/pexels-photo-588604.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/588604/pexels-photo-588604.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.5,
       reviews: 124,
       isNew: false,
@@ -72,11 +66,8 @@ const getProducts = () => {
       name: "Cotton Dress - Floral",
       price: "$59",
       originalPrice: "$79",
-      image: [
+      image:
         "https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.8,
       reviews: 156,
       isNew: true,
@@ -89,11 +80,8 @@ const getProducts = () => {
       name: "Swim Trunks - Navy",
       price: "$35",
       originalPrice: "$45",
-      image: [
+      image:
         "https://images.pexels.com/photos/1484807/pexels-photo-1484807.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/1484807/pexels-photo-1484807.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/1484807/pexels-photo-1484807.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.6,
       reviews: 78,
       isNew: false,
@@ -106,11 +94,8 @@ const getProducts = () => {
       name: "Straw Hat - Natural",
       price: "$29",
       originalPrice: "$39",
-      image: [
+      image:
         "https://images.pexels.com/photos/35185/hats-fedora-hat-manufacture-stack.jpg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/35185/hats-fedora-hat-manufacture-stack.jpg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/35185/hats-fedora-hat-manufacture-stack.jpg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.4,
       reviews: 112,
       isNew: true,
@@ -123,11 +108,8 @@ const getProducts = () => {
       name: "Canvas Sneakers - White",
       price: "$45",
       originalPrice: "$65",
-      image: [
+      image:
         "https://images.pexels.com/photos/19090/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/19090/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/19090/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.6,
       reviews: 203,
       isNew: false,
@@ -140,11 +122,8 @@ const getProducts = () => {
       name: "Linen Pants - Beige",
       price: "$55",
       originalPrice: "$75",
-      image: [
+      image:
         "https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.7,
       reviews: 67,
       isNew: true,
@@ -157,11 +136,8 @@ const getProducts = () => {
       name: "Graphic T-Shirt - Black",
       price: "$25",
       originalPrice: "$35",
-      image: [
+      image:
         "https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.5,
       reviews: 145,
       isNew: false,
@@ -280,12 +256,6 @@ export default function CollectionPage({
       : [],
   };
 
-  const gridSize = (searchParams.grid?.toString() || "4x4") as
-    | "2x2"
-    | "4x4"
-    | "6x6";
-  const sortBy = searchParams.sort?.toString() || "featured";
-
   return (
     <div className="mx-auto">
       <CollectionHeader collection={collection} />
@@ -296,7 +266,6 @@ export default function CollectionPage({
           filterOptions={filterOptions}
           activeFilters={activeFilters}
           searchParams={searchParams}
-          gridSize={gridSize}
         />
         <ActiveFilters
           activeFilters={activeFilters}
@@ -304,7 +273,7 @@ export default function CollectionPage({
           searchParams={searchParams}
         />
         {/* <div className="max-w-full mx-auto"> */}
-        <ProductGrid products={products} gridSize={gridSize} />
+        <ProductGrid products={products} />
         {/* </div> */}
       </div>
     </div>

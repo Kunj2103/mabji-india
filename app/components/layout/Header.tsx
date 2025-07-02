@@ -267,7 +267,7 @@ export default function Header() {
   }, [isMenuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white shadow-sm text-black">
+    <header className="sticky top-0 z-50 w-full  bg-white shadow-sm text-black">
       {/* Main Header */}
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
@@ -299,7 +299,7 @@ export default function Header() {
           {/* Center: Logo */}
           <Link
             href="/"
-            className="absolute left-1/2 transform -translate-x-1/2 text-2xl font-bold tracking-wide text-black"
+            className="absolute left-1/2 transform -translate-x-1/2 text-3xl font-bold tracking-wide text-black"
           >
             MABJI INDIA
           </Link>
@@ -345,17 +345,6 @@ export default function Header() {
             <div className="flex items-center space-x-4 text-sm font-semibold text-black">
               {user ? (
                 <>
-                  <Link href="/cart" className="relative hover:underline">
-                    <span className="hidden md:block">BAG ({totalItems})</span>
-                    <div className="relative block md:hidden">
-                      <ShoppingCart className="h-5 w-5 text-black" />{" "}
-                      {totalItems > 0 && (
-                        <span className="absolute -top-2 -right-2 text-xs bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center">
-                          {totalItems}
-                        </span>
-                      )}
-                    </div>
-                  </Link>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <button>
@@ -382,10 +371,23 @@ export default function Header() {
                   </DropdownMenu>
                 </>
               ) : (
-                <Link href="/login" className="hover:underline">
-                  <span className="hidden md:block">LOG IN</span>
-                  <User className="h-5 w-5 text-black block md:hidden" />
-                </Link>
+                <>
+                  <Link href="/login" className="hover:underline">
+                    <span className="hidden md:block">LOG IN</span>
+                    <User className="h-5 w-5 text-black block md:hidden" />
+                  </Link>
+                  <Link href="/cart" className="relative hover:underline">
+                    <span className="hidden md:block">CART ({totalItems})</span>
+                    <div className="relative block md:hidden">
+                      <ShoppingCart className="h-5 w-5 text-black" />{" "}
+                      {totalItems > 0 && (
+                        <span className="absolute -top-2 -right-2 text-xs bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center">
+                          {totalItems}
+                        </span>
+                      )}
+                    </div>
+                  </Link>
+                </>
               )}
             </div>
           </div>

@@ -14,6 +14,7 @@ interface Review {
   customerName: string;
   purchaseDate: string;
   fullComment?: string;
+  countryName: string;
 }
 
 const reviews: Review[] = [
@@ -27,6 +28,7 @@ const reviews: Review[] = [
       "Ankit and team were super accommodating to any changes to the design. I added a hidden halo and increased the width to 2.0mm. The ring took about a month to arrive from the initial order, but it was worth the wait. The quality is exceptional!",
     customerName: "Erika",
     purchaseDate: "22/10/2023",
+    countryName: "United States",
   },
   {
     id: 2,
@@ -38,6 +40,7 @@ const reviews: Review[] = [
       "I ordered a customized version of a stock ring that had a fixed center stone size. I upgraded to a larger center stone, which required Ankit to change the rest of the ring to accommodate the new size. The result is stunning and exactly what I wanted!",
     customerName: "Alexa Carol",
     purchaseDate: "22/12/2023",
+    countryName: "United States",
   },
   {
     id: 3,
@@ -47,6 +50,7 @@ const reviews: Review[] = [
       "The ring is absolutely stunning! And it came quicker than expected. It originally was not going to come in time for the engagement, but it arrive way earlier than expected.",
     customerName: "Avery Preston",
     purchaseDate: "27/12/2023",
+    countryName: "United States",
   },
   {
     id: 4,
@@ -58,6 +62,19 @@ const reviews: Review[] = [
       "These studs are so beautifully made. The quality, colour, and size of the diamonds are exactly what I wanted. I received them as a graduation gift and could not be happier. The posts are secure and comfortable to wear all day.",
     customerName: "Victoria",
     purchaseDate: "31/12/2023",
+    countryName: "United States",
+  },
+  {
+    id: 5,
+    image:
+      "https://images.pexels.com/photos/1721940/pexels-photo-1721940.jpeg?auto=compress&cs=tinysrgb&w=800",
+    comment:
+      "Absolutely love my new necklace! The craftsmanship is outstanding and the customer service was exceptional. The delivery was prompt and the packaging was beautiful...",
+    fullComment:
+      "Absolutely love my new necklace! The craftsmanship is outstanding and the customer service was exceptional. The delivery was prompt and the packaging was beautiful. I've received so many compliments already. Highly recommend!",
+    customerName: "Sarah Mitchell",
+    purchaseDate: "15/01/2024",
+    countryName: "United States",
   },
 ];
 
@@ -113,14 +130,14 @@ export default function ReviewSection() {
 
         <div className="relative">
           <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex gap-6 px-1">
+            <div className="flex gap-2 px-1 justify-between">
               {reviews.map((review) => (
                 <div
                   key={review.id}
-                  className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] md:flex-[0_0_33.333%] lg:flex-[0_0_calc(25%-18px)]"
+                  className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] md:flex-[0_0_33.333%] lg:flex-[0_0_calc(16.666%-15px)]"
                 >
                   <div className="bg-white rounded-lg border border-gray-200 overflow-hidden h-full flex flex-col">
-                    <div className="aspect-[3/4] relative flex-1">
+                    <div className="relative h-48">
                       <Image
                         src={review.image}
                         alt={`Review by ${review.customerName}`}
@@ -133,7 +150,7 @@ export default function ReviewSection() {
                       <div className="text-sm text-gray-500 mt-auto">
                         <p>Verified Purchase on {review.purchaseDate}</p>
                         <p className="font-medium mt-1">
-                          {review.customerName}
+                          {review.customerName} - {review.countryName}
                         </p>
                       </div>
                     </div>
@@ -142,9 +159,9 @@ export default function ReviewSection() {
               ))}
 
               {/* View More Card */}
-              <div className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] md:flex-[0_0_33.333%] lg:flex-[0_0_calc(25%-18px)]">
-                <div className="bg-white rounded-lg h-full flex items-center justify-center p-6">
-                  <div className="text-center">
+              <div className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] md:flex-[0_0_33.333%] lg:flex-[0_0_calc(16.666%-15px)]">
+                <div className="bg-white rounded-lg border border-gray-200 overflow-hidden h-full flex flex-col justify-center items-center">
+                  <div className="text-center p-6">
                     <p className="text-2xl font-medium mb-2">
                       3460+ Verified Reviews
                     </p>
@@ -162,10 +179,11 @@ export default function ReviewSection() {
           </div>
 
           {/* Navigation Buttons */}
+
           <button
             onClick={scrollPrev}
             disabled={!prevBtnEnabled}
-            className={`cursor-pointer absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center ${
+            className={`lg:hidden cursor-pointer absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center ${
               !prevBtnEnabled
                 ? "opacity-50 cursor-not-allowed"
                 : "hover:bg-gray-50"
@@ -176,7 +194,7 @@ export default function ReviewSection() {
           <button
             onClick={scrollNext}
             disabled={!nextBtnEnabled}
-            className={`cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center ${
+            className={`lg:hidden cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center ${
               !nextBtnEnabled
                 ? "opacity-50 cursor-not-allowed"
                 : "hover:bg-gray-50"

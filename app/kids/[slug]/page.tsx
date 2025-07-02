@@ -38,11 +38,8 @@ const getProducts = () => {
       name: "Kids Cotton T-Shirt - Blue",
       price: "$24",
       originalPrice: "$32",
-      image: [
+      image:
         "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.8,
       reviews: 89,
       isNew: true,
@@ -56,11 +53,8 @@ const getProducts = () => {
       name: "Girls Floral Dress - Pink",
       price: "$39",
       originalPrice: "$49",
-      image: [
+      image:
         "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.9,
       reviews: 156,
       isNew: true,
@@ -74,11 +68,8 @@ const getProducts = () => {
       name: "Boys Cargo Pants - Khaki",
       price: "$34",
       originalPrice: "$44",
-      image: [
+      image:
         "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.7,
       reviews: 123,
       isNew: false,
@@ -92,11 +83,8 @@ const getProducts = () => {
       name: "Kids Hoodie - Gray",
       price: "$29",
       originalPrice: "$39",
-      image: [
+      image:
         "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.6,
       reviews: 98,
       isNew: true,
@@ -110,11 +98,8 @@ const getProducts = () => {
       name: "Girls Tutu Skirt - White",
       price: "$19",
       originalPrice: "$25",
-      image: [
+      image:
         "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.8,
       reviews: 67,
       isNew: true,
@@ -128,11 +113,8 @@ const getProducts = () => {
       name: "Boys Polo Shirt - Red",
       price: "$22",
       originalPrice: "$28",
-      image: [
+      image:
         "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.5,
       reviews: 78,
       isNew: false,
@@ -146,11 +128,8 @@ const getProducts = () => {
       name: "Kids Sneakers - White",
       price: "$45",
       originalPrice: "$59",
-      image: [
+      image:
         "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.7,
       reviews: 134,
       isNew: true,
@@ -164,11 +143,8 @@ const getProducts = () => {
       name: "Girls Leggings - Purple",
       price: "$16",
       originalPrice: "$22",
-      image: [
+      image:
         "https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-        "https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=45",
-        "https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop&angle=90",
-      ],
       rating: 4.7,
       reviews: 67,
       isNew: true,
@@ -181,9 +157,8 @@ const getProducts = () => {
       name: "Linen Pants - Beige",
       price: "$55",
       originalPrice: "$75",
-      image: [
+      image:
         "https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop",
-      ],
       rating: 4.7,
       reviews: 145,
       isNew: false,
@@ -302,10 +277,6 @@ export default function CollectionPage({
       : [],
   };
 
-  const gridSize = (searchParams.grid?.toString() || "4x4") as
-    | "2x2"
-    | "4x4"
-    | "6x6";
   const sortBy = searchParams.sort?.toString() || "featured";
 
   return (
@@ -318,7 +289,6 @@ export default function CollectionPage({
           filterOptions={filterOptions}
           activeFilters={activeFilters}
           searchParams={searchParams}
-          gridSize={gridSize}
         />
         <ActiveFilters
           activeFilters={activeFilters}
@@ -326,7 +296,7 @@ export default function CollectionPage({
           searchParams={searchParams}
         />
         {/* <div className="max-w-full mx-auto"> */}
-        <ProductGrid products={products} gridSize={gridSize} />
+        <ProductGrid products={products} />
         {/* </div> */}
       </div>
     </div>

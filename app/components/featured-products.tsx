@@ -1,6 +1,13 @@
 import ProductGrid from "./product-grid";
+import { Product } from "@/lib/types";
 
-export default function FeaturesAndProducts({ products = [] }) {
+interface FeaturedProductsProps {
+  products: Product[];
+}
+
+export default function FeaturesAndProducts({
+  products = [],
+}: FeaturedProductsProps) {
   return (
     <section className="py-16">
       <div className="text-center mb-12">
